@@ -36,6 +36,7 @@ pipeline {
         container("curl") {
           script {
             def status = pushDynatraceDeploymentEvent (
+              deploymentVersion : env.BUILD_ID,
               tagRule : tagMatchRules,
               customProperties : [
                 [key: 'Jenkins Build Number', value: "${env.BUILD_ID}"],
